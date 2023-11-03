@@ -49,6 +49,21 @@ public class TableViewBuilder: UIBuilder<UITableView> {
         return self
     }
     
+    public func setDropDelegate(_ delegate: UITableViewDropDelegate) -> Self {
+        view.dropDelegate = delegate
+        return self
+    }
+    
+    public func setDragDelegate(_ delegate: UITableViewDragDelegate) -> Self {
+        view.dragDelegate = delegate
+        return self
+    }
+    
+    public func setDragInteractionEnabled(_ enabled: Bool) -> Self {
+        view.dragInteractionEnabled = enabled
+        return self
+    }
+    
     // Scroll
     public func setShowsVerticalScrollIndicator(_ show: Bool) -> Self {
         view.showsVerticalScrollIndicator = show
