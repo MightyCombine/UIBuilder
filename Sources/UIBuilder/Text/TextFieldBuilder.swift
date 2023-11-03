@@ -126,10 +126,10 @@ public class TextFieldBuilder: UIBuilder<UITextField> {
         return self
     }
     
-    public func setTextPublisher(_ store: inout Set<AnyCancellable>,_ action: @escaping (String) -> Void) -> Self {
+    public func setTextPublisher(_ cancellables: inout Set<AnyCancellable>,_ action: @escaping (String) -> Void) -> Self {
         self.view.textPublisher.sink { value in
             action(value)
-        }.store(in: &store)
+        }.store(in: &cancellables)
         return self
     }
 }

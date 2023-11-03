@@ -36,11 +36,11 @@ public class RefreshControlBuilder: UIBuilder<UIRefreshControl> {
         return self
     }
     
-    public func setRefreshPublisher(_ store: inout Set<AnyCancellable>,_ action: @escaping () -> Void) -> Self {
+    public func setRefreshPublisher(_ cancellables: inout Set<AnyCancellable>,_ action: @escaping () -> Void) -> Self {
         view.controlPublisher(for: .valueChanged)
             .sink { _ in
                 action()
-            }.store(in: &store)
+            }.store(in: &cancellables)
         return self
     }
 }

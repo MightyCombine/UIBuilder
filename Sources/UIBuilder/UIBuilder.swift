@@ -50,7 +50,7 @@ extension UIBuilder {
         return self
     }
     
-    public func setSuperView(_ view: UIView) -> Self {
+    public func addToSuperView(_ view: UIView) -> Self {
         view.addSubview(self.view)
         return self
     }
@@ -75,10 +75,10 @@ extension UIBuilder {
         return self
     }
     
-    public func setTapPublusher(_ store: inout Set<AnyCancellable>,_ action: @escaping () -> Void) -> Self {
+    public func setTapPublusher(_ cancellables: inout Set<AnyCancellable>,_ action: @escaping () -> Void) -> Self {
         view.tapGesturePublisher.sink { _ in
             action()
-        }.store(in: &store)
+        }.store(in: &cancellables)
         return self
     }
 }
