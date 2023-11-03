@@ -48,6 +48,4 @@ public class TableViewBuilder: UIBuilder<UITableView> {
         view.register(cellClass, forCellReuseIdentifier: reuseIdentifier)
         return self
     }
-    
-    // Add more functions as needed
 }
