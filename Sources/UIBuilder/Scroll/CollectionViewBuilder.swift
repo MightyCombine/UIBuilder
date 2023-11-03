@@ -29,6 +29,11 @@ public class CollectionViewBuilder: UIBuilder<UICollectionView> {
         return self
     }
     
+    public func setIsPagingEnabled(_ enabled: Bool) -> Self {
+        view.isPagingEnabled = enabled
+        return self
+    }
+    
     // Scroll
     public func setShowsVerticalScrollIndicator(_ show: Bool) -> Self {
         view.showsVerticalScrollIndicator = show
