@@ -26,7 +26,7 @@ lazy var button = ButtonBuilder()
     .setTitleColor(.blue, for: .normal)
     .setTranslatesAuto()
     .setSuperView(self.view)
-    .setControlPublisher(&store) {
+    .setEventPublisher(&store) {
         print("Tap")
     }
     .build()

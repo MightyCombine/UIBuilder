@@ -17,7 +17,7 @@ public class ButtonBuilder: UIBuilder<UIButton> {
         return self
     }
     
-    public func setControlPublisher(
+    public func setEventPublisher(
         event: UIControl.Event = .touchUpInside,
         _ store: inout Set<AnyCancellable>,
         _ action: @escaping () -> Void
