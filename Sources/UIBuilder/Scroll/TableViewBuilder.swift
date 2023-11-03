@@ -5,6 +5,7 @@
 //  Created by 김인섭 on 11/3/23.
 //
 
+#if canImport(UIKit)
 import UIKit
 
 public class TableViewBuilder: ScrollViewBuilder<UITableView> {
@@ -64,3 +65,4 @@ public class TableViewBuilder: ScrollViewBuilder<UITableView> {
         return self
     }
 }
+#endif

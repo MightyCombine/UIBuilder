@@ -5,6 +5,7 @@
 //  Created by 김인섭 on 11/3/23.
 //
 
+#if canImport(UIKit)
 import UIKit
 
 public class StackViewBuilder: UIBuilder<UIStackView> {
@@ -34,3 +35,4 @@ public class StackViewBuilder: UIBuilder<UIStackView> {
         return self
     }
 }
+#endif

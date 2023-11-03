@@ -5,7 +5,10 @@
 //  Created by 김인섭 on 11/3/23.
 //
 
+#if canImport(UIKit)
 import UIKit
+import Combine
+import MightyCombine
 
 public class TextViewBuilder: UIBuilder<UITextView> {
 
@@ -113,4 +116,12 @@ public class TextViewBuilder: UIBuilder<UITextView> {
         view.showsVerticalScrollIndicator = shows
         return self
     }
+    
+    public func setTextPublisher(_ store: inout Set<AnyCancellable>, _ action: @escaping (String) -> Void) -> Self {
+        self.view.textPublisher.sink { value in
+            action(value)
+        }.store(in: &store)
+        return self
+    }
 }
+#endif

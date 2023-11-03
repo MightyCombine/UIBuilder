@@ -5,6 +5,7 @@
 //  Created by 김인섭 on 11/3/23.
 //
 
+#if canImport(UIKit)
 import UIKit
 
 public class CollectionViewBuilder: ScrollViewBuilder<UICollectionView> {
@@ -34,3 +35,4 @@ public class CollectionViewBuilder: ScrollViewBuilder<UICollectionView> {
         return self
     }
 }
+#endif

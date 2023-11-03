@@ -5,6 +5,7 @@
 //  Created by 김인섭 on 11/3/23.
 //
 
+#if canImport(UIKit)
 import UIKit
 
 public class ScrollViewBuilder<T: UIScrollView>: UIBuilder<T> {
@@ -39,3 +40,4 @@ public class ScrollViewBuilder<T: UIScrollView>: UIBuilder<T> {
         return self
     }
 }
+#endif

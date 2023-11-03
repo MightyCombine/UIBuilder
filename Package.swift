@@ -5,18 +5,19 @@ import PackageDescription
 
 let package = Package(
     name: "UIBuilder",
-    platforms: [.iOS(.v14)],
+    platforms: [.iOS(.v13)],
     products: [
-        // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
             name: "UIBuilder",
             targets: ["UIBuilder"]),
     ],
+    dependencies: [
+        .package(url: "https://github.com/MightyCombine/MightyCombine.git", from: "1.0.2"),
+    ],
     targets: [
-        // Targets are the basic building blocks of a package, defining a module or a test suite.
-        // Targets can depend on other targets in this package and products from dependencies.
         .target(
-            name: "UIBuilder"),
+            name: "UIBuilder",
+            dependencies: ["MightyCombine"]),
         .testTarget(
             name: "UIBuilderTests",
             dependencies: ["UIBuilder"]),

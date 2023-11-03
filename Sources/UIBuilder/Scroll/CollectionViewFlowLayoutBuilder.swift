@@ -5,6 +5,7 @@
 //  Created by 김인섭 on 11/3/23.
 //
 
+#if canImport(UIKit)
 import UIKit
 
 public class CollectionViewFlowLayoutBuilder {
@@ -69,4 +70,4 @@ public class CollectionViewFlowLayoutBuilder {
         return layout
     }
 }
-
+#endif

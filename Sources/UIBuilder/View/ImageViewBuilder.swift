@@ -5,6 +5,7 @@
 //  Created by 김인섭 on 11/3/23.
 //
 
+#if canImport(UIKit)
 import UIKit
 
 public class ImageViewBuilder: UIBuilder<UIImageView> {
@@ -64,3 +65,4 @@ public class ImageViewBuilder: UIBuilder<UIImageView> {
         return self
     }
 }
+#endif

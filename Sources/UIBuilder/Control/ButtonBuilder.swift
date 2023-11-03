@@ -5,7 +5,10 @@
 //  Created by 김인섭 on 11/3/23.
 //
 
+#if canImport(UIKit)
 import UIKit
+import Combine
+import MightyCombine
 
 public class ButtonBuilder: UIBuilder<UIButton> {
     
@@ -13,9 +16,15 @@ public class ButtonBuilder: UIBuilder<UIButton> {
         view.setTitle(title, for: state)
         return self
     }
-
-    public func setAction(_ action: @escaping () -> Void) -> Self {
-        view.addAction(UIAction(handler: { _ in action() }), for: .touchUpInside)
+    
+    public func setControlPublisher(
+        event: UIControl.Event = .touchUpInside,
+        _ store: inout Set<AnyCancellable>,
+        _ action: @escaping () -> Void
+    ) -> Self {
+        view.controlPublisher(for: event).sink { _ in
+            action()
+        }.store(in: &store)
         return self
     }
 
@@ -49,3 +58,4 @@ public class ButtonBuilder: UIBuilder<UIButton> {
         return self
     }
 }
+#endif

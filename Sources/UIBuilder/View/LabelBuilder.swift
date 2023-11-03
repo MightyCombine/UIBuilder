@@ -5,6 +5,7 @@
 //  Created by 김인섭 on 11/3/23.
 //
 
+#if canImport(UIKit)
 import UIKit
 
 public class LabelBuilder: UIBuilder<UILabel> {
@@ -96,3 +97,4 @@ public class LabelBuilder: UIBuilder<UILabel> {
         return self
     }
 }
+#endif

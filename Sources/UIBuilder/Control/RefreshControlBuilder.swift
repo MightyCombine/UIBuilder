@@ -5,7 +5,10 @@
 //  Created by 김인섭 on 11/3/23.
 //
 
+#if canImport(UIKit)
 import UIKit
+import Combine
+import MightyCombine
 
 public class RefreshControlBuilder: UIBuilder<UIRefreshControl> {
     
@@ -32,4 +35,13 @@ public class RefreshControlBuilder: UIBuilder<UIRefreshControl> {
         }
         return self
     }
+    
+    public func setRefreshPublisher(_ store: inout Set<AnyCancellable>,_ action: @escaping () -> Void) -> Self {
+        view.controlPublisher(for: .valueChanged)
+            .sink { _ in
+                action()
+            }.store(in: &store)
+        return self
+    }
 }
+#endif
