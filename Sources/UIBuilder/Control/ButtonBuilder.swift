@@ -19,12 +19,12 @@ public class ButtonBuilder: UIBuilder<UIButton> {
     
     public func setEventPublisher(
         event: UIControl.Event = .touchUpInside,
-        _ store: inout Set<AnyCancellable>,
+        _ cancellables: inout Set<AnyCancellable>,
         _ action: @escaping () -> Void
     ) -> Self {
         view.controlPublisher(for: event).sink { _ in
             action()
-        }.store(in: &store)
+        }.store(in: &cancellables)
         return self
     }
 
