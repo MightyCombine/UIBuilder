@@ -114,4 +114,3 @@ public class TextViewBuilder: UIBuilder<UITextView> {
         return self
     }
 }
-
