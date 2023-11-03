@@ -25,10 +25,25 @@ lazy var button = ButtonBuilder()
 
 ### TableView
 ```swift
+lazy var tableRefresh = RefreshControlBuilder()
+    .addTarget(self, action: #selector(refresh), for: .valueChanged)
+    .build()
+    
 lazy var tableView = TableViewBuilder()
+    .setRefreshControl(tableRefresh)
     .setDelegate(self)
     .setDataSource(self)
     .setTranslatesAuto()
     .setSuperView(self.view)
+    .build()
+```
+
+### TextField
+```swift
+lazy var textField = TextFieldBuilder()
+    .setPlaceholder("Type Something")
+    .setTextColor(.black)
+    .setSuperView(self.view)
+    .setTranslatesAuto()
     .build()
 ```
