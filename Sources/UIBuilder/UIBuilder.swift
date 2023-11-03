@@ -11,7 +11,7 @@ public class UIBuilder<T: UIView> {
     
     var view: T
 
-    public init(view: T) {
+    public init(view: T = .init()) {
         self.view = view
     }
 

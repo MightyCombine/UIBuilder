@@ -7,44 +7,29 @@
 
 import UIKit
 
-public class RefreshControlBuilder {
-    
-    private var refreshControl: UIRefreshControl
-    
-    public init() {
-        self.refreshControl = UIRefreshControl()
-    }
+public class RefreshControlBuilder: UIBuilder<UIRefreshControl> {
     
     public func setTintColor(_ color: UIColor) -> Self {
-        refreshControl.tintColor = color
+        view.tintColor = color
         return self
     }
     
     public func setAttributedTitle(_ attributedTitle: NSAttributedString?) -> Self {
-        refreshControl.attributedTitle = attributedTitle
+        view.attributedTitle = attributedTitle
         return self
     }
     
     public func addTarget(_ target: Any?, action: Selector, for controlEvents: UIControl.Event) -> Self {
-        refreshControl.addTarget(target, action: action, for: controlEvents)
+        view.addTarget(target, action: action, for: controlEvents)
         return self
     }
     
     public func setRefreshing(_ refreshing: Bool) -> Self {
         if refreshing {
-            refreshControl.beginRefreshing()
+            view.beginRefreshing()
         } else {
-            refreshControl.endRefreshing()
+            view.endRefreshing()
         }
         return self
-    }
-    
-    public func setBackgroundColor(_ color: UIColor) -> Self {
-        refreshControl.backgroundColor = color
-        return self
-    }
-    
-    public func build() -> UIRefreshControl {
-        return refreshControl
     }
 }
