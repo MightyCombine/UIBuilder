@@ -48,4 +48,3 @@ public class RefreshControlBuilder {
         return refreshControl
     }
 }
-

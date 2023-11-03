@@ -108,4 +108,18 @@ public class TextFieldBuilder: UIBuilder<UITextField> {
         view.delegate = delegate
         return self
     }
+    
+    public func setLeftViewPadding(_ padding: CGFloat) -> Self {
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: padding, height: self.view.frame.height))
+        self.view.leftView = paddingView
+        self.view.leftViewMode = .always
+        return self
+    }
+    
+    public func setRightViewPadding(_ padding: CGFloat) -> Self {
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: padding, height: self.view.frame.height))
+        self.view.rightView = paddingView
+        self.view.rightViewMode = .always
+        return self
+    }
 }
