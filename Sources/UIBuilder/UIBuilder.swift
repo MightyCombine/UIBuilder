@@ -55,7 +55,7 @@ extension UIBuilder {
         return self
     }
     
-    public func setTranslatesAuto(_ state: Bool = false) -> Self {
+    public func setTranslatesAutoresizing(_ state: Bool = false) -> Self {
         view.translatesAutoresizingMaskIntoConstraints = state
         return self
     }
