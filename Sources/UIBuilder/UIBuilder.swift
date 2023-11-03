@@ -61,4 +61,14 @@ extension UIBuilder {
         view.contentMode = contentMode
         return self
     }
+    
+    public func setIsHidden(_ state: Bool) -> Self {
+        view.isHidden = state
+        return self
+    }
+    
+    public func setIsUserInteractionEnabled(_ state: Bool) -> Self {
+        view.isUserInteractionEnabled = state
+        return self
+    }
 }
