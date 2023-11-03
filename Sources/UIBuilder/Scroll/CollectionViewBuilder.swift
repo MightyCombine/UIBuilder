@@ -20,8 +20,8 @@ public class CollectionViewBuilder: ScrollViewBuilder<UICollectionView> {
         return self
     }
     
-    public func registerCell<T: UICollectionViewCell>(_ cellClass: T.Type, _ reuseIdentifier: String) -> Self {
-        view.register(cellClass, forCellWithReuseIdentifier: reuseIdentifier)
+    public func registerCell<T: UICollectionViewCell>(_ cellClass: T.Type, identifier: String) -> Self {
+        view.register(cellClass, forCellWithReuseIdentifier: identifier)
         return self
     }
     

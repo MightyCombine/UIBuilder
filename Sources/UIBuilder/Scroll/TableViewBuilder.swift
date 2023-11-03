@@ -45,8 +45,8 @@ public class TableViewBuilder: ScrollViewBuilder<UITableView> {
         return self
     }
     
-    public func registerCell<T: UITableViewCell>(_ cellClass: T.Type, _ reuseIdentifier: String) -> Self {
-        view.register(cellClass, forCellReuseIdentifier: reuseIdentifier)
+    public func registerCell<T: UITableViewCell>(_ cellClass: T.Type, identifier: String) -> Self {
+        view.register(cellClass, forCellReuseIdentifier: identifier)
         return self
     }
     
