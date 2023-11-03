@@ -54,4 +54,9 @@ public class CollectionViewBuilder: UIBuilder<UICollectionView> {
         view.refreshControl = refresh
         return self
     }
+    
+    public func setKeyboardDismissMode(_ mode: UIScrollView.KeyboardDismissMode) -> Self {
+        view.keyboardDismissMode = mode
+        return self
+    }
 }
