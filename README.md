@@ -1,21 +1,21 @@
 # UIBuilder
 
-## Example
+## ✔️ Examples
 
-### Label
+### UILabel
 ```swift
-lazy var count = LabelBuilder()
-    .setText("\(self.store.count)")
+lazy var label = LabelBuilder()
+    .setText("\(Hello World)")
     .setTextColor(.black)
     .setTranslatesAuto()
     .setSuperView(self.view)
     .build()
 ```
 
-### Button
+### UIButton
 ```swift
 lazy var button = ButtonBuilder()
-    .setAction { self.store.send(.didTap) }
+    .setAction { self.didTapButton() }
     .setTitle("Button", for: .normal)
     .setTitleColor(.blue, for: .normal)
     .setTranslatesAuto()
@@ -23,7 +23,7 @@ lazy var button = ButtonBuilder()
     .build()
 ```
 
-### TableView
+### UITableView
 ```swift
 lazy var tableRefresh = RefreshControlBuilder()
     .addTarget(self, action: #selector(refresh), for: .valueChanged)
@@ -38,7 +38,7 @@ lazy var tableView = TableViewBuilder()
     .build()
 ```
 
-### TextField
+### UITextField
 ```swift
 lazy var textField = TextFieldBuilder()
     .setPlaceholder("Type Something")
