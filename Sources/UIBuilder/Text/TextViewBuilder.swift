@@ -117,10 +117,22 @@ public class TextViewBuilder: UIBuilder<UITextView> {
         return self
     }
     
-    public func setTextPublisher(_ cancellables: inout Set<AnyCancellable>, _ action: @escaping (String) -> Void) -> Self {
+    public func setTextPublisher(
+        _ cancellables: inout Set<AnyCancellable>,
+        _ action: @escaping (String) -> Void
+    ) -> Self {
         self.view.textPublisher.sink { value in
             action(value)
         }.store(in: &cancellables)
+        return self
+    }
+    
+    public func bind(
+        to published: inout Published<String>.Publisher
+    ) -> Self {
+        self.view
+            .textPublisher
+            .assign(to: &published)
         return self
     }
 }

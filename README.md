@@ -63,6 +63,7 @@ lazy var textField = TextFieldBuilder()
     .setTextPublisher(&store) {
         print($0)
     }
+    .bind(to: &viewModel.$text)
     .build()
 ```
 
@@ -78,5 +79,6 @@ lazy var textView = TextViewBuilder()
     .setTextPublisher(&store) {
         print($0)
     }
+    .bind(to: &viewModel.$text)
     .build()
 ```

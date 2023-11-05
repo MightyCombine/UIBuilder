@@ -24,7 +24,7 @@ public class UIBuilder<T: UIView> {
 }
 
 extension UIBuilder {
-
+    
     public func setBackgroundColor(_ color: UIColor) -> Self {
         view.backgroundColor = color
         return self
