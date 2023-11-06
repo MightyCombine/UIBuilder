@@ -35,7 +35,8 @@ lazy var button = ButtonBuilder()
 ### UITableView
 ```swift
 private var store = Set<AnyCancellable>()
-
+@Published var items: [Int] = [0]
+    
 lazy var tableRefresh = RefreshControlBuilder()
     .setRefreshPublisher(&store) {
         print("Should Refresh")
@@ -48,7 +49,51 @@ lazy var tableView = TableViewBuilder()
     .setDataSource(self)
     .setTranslatesAutoresizing()
     .addToSuperView(self.view)
+    .registerCell(UITableViewCell.self, identifier: "UITableViewCell")
+    .bind(items: $items, &cancellables, self.buildTableViewCell(_:_:_:))
     .build()
+    
+func buildTableViewCell(_ table: UITableView, _ indexPath: IndexPath, _ element: Int) -> UITableViewCell {
+    let cell = tableView.dequeueReusableCell(withIdentifier: "UITableViewCell", for: indexPath)
+    cell.textLabel?.text = String(element)
+    return cell
+}
+```
+
+### UICollectionView
+```swift
+@Published var items: [Int] = [0]
+private var cancellables = Set<AnyCancellable>()
+    
+lazy var refresh = RefreshControlBuilder()
+    .setRefreshPublisher(&cancellables) {
+        self.shouldRefresh()
+    }.build()
+
+var cellSize: CGSize {
+    let width = view.frame.width / 3 - 1
+    return .init(width: width, height: width)
+}
+lazy var flow = CollectionViewFlowLayoutBuilder()
+    .setMinimumLineSpacing(1)
+    .setMinimumInteritemSpacing(1)
+    .setScrollDirection(.vertical)
+    .setItemSize(cellSize)
+    .build()
+
+lazy var collectionView = CollectionViewBuilder()
+    .setRefreshControl(self.refresh)
+    .registerCell(CustomCollectionCell.self, identifier: "CustomCollectionCell")
+    .bind(items: $items, &cancellables, buildCollectionViewCell(_:_:_:))
+    .addToSuperView(self.view)
+    .setFlowLayout(flow)
+    .build()
+    
+func buildCollectionViewCell(_ collectionView: UICollectionView, _ indexPath: IndexPath, _ element: Int) -> UICollectionViewCell {
+    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CustomCollectionCell", for: indexPath) as! CustomCollectionCell
+    cell.setImageView()
+    return cell
+} 
 ```
 
 ### UITextField
