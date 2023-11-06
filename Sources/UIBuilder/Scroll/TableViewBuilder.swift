@@ -7,6 +7,7 @@
 
 #if canImport(UIKit)
 import UIKit
+import Combine
 
 public class TableViewBuilder: ScrollViewBuilder<UITableView> {
     
@@ -63,6 +64,52 @@ public class TableViewBuilder: ScrollViewBuilder<UITableView> {
     public func setDragInteractionEnabled(_ enabled: Bool) -> Self {
         view.dragInteractionEnabled = enabled
         return self
+    }
+    
+    public func bind<T>(
+        items: Published<[T]>.Publisher,
+        _ cancellables: inout Set<AnyCancellable>,
+        _ builder: @escaping (UITableView, IndexPath, T) -> UITableViewCell
+    ) -> Self {
+        items.receive(on: DispatchQueue.main)
+            .sink(receiveValue: view.items(builder))
+            .store(in: &cancellables)
+        return self
+    }
+}
+
+extension UITableView {
+    
+    func items<Element>(
+        _ builder: @escaping (UITableView, IndexPath, Element) -> UITableViewCell
+    ) -> ([Element]) -> Void {
+        let dataSource = CombineTableViewDataSource(builder: builder)
+        return { dataSource.pushElements($0, to: self) }
+    }
+}
+
+class CombineTableViewDataSource<Element>: NSObject, UITableViewDataSource {
+
+    let build: (UITableView, IndexPath, Element) -> UITableViewCell
+    var elements: [Element] = []
+
+    init(builder: @escaping (UITableView, IndexPath, Element) -> UITableViewCell) {
+        build = builder
+        super.init()
+    }
+
+    func pushElements(_ elements: [Element], to tableView: UITableView) {
+        tableView.dataSource = self
+        self.elements = elements
+        tableView.reloadData()
+    }
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        elements.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        build(tableView, indexPath, elements[indexPath.row])
     }
 }
 #endif
