@@ -127,6 +127,7 @@ public class TextViewBuilder: UIBuilder<UITextView> {
         return self
     }
     
+    @available(iOS 14.0, *)
     public func bind(
         to published: inout Published<String>.Publisher
     ) -> Self {
