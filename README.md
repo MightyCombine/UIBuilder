@@ -18,7 +18,7 @@ lazy var label = LabelBuilder()
     .build()
     
 ✅ SelfBuildable 
-lazy var label = UILabel.build {
+lazy var label = UILabel {
     $0.text = "Label"
     $0.textColor = .black
     $0.addToSuperView(self.view)
@@ -41,7 +41,7 @@ lazy var button = ButtonBuilder()
     .build()
     
 ✅ SelfBuildable 
-lazy var button = UIButton.build {
+lazy var button = UIButton {
     $0.setTitle("Button", for: .normal)
     $0.setTitleColor(.blue, for: .normal)
     $0.eventPublisher(for: .touchDown).sink {
