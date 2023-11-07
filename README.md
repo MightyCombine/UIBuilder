@@ -6,6 +6,7 @@
 ```swift
 private var store = Set<AnyCancellable>()
 
+✅ Builder
 lazy var label = LabelBuilder()
     .setText("\(Hello World)")
     .setTextColor(.black)
@@ -15,12 +16,20 @@ lazy var label = LabelBuilder()
         print("Tap")
     }
     .build()
+    
+✅ SelfBuildable 
+lazy var label = UILabel.build {
+    $0.text = "Label"
+    $0.textColor = .black
+    $0.addToSuperView(self.view)
+}
 ```
 
 ### UIButton
 ```swift
 private var store = Set<AnyCancellable>()
 
+✅ Builder
 lazy var button = ButtonBuilder()
     .setTitle("Button", for: .normal)
     .setTitleColor(.blue, for: .normal)
@@ -30,6 +39,16 @@ lazy var button = ButtonBuilder()
         print("Tap")
     }
     .build()
+    
+✅ SelfBuildable 
+lazy var button = UIButton.build {
+    $0.setTitle("Button", for: .normal)
+    $0.setTitleColor(.blue, for: .normal)
+    $0.eventPublisher(for: .touchDown).sink {
+        print("Tap")
+    }.store(in: &store)
+    $0.addToSuperView(self.view)
+}
 ```
 
 ### UITableView
@@ -37,12 +56,14 @@ lazy var button = ButtonBuilder()
 private var store = Set<AnyCancellable>()
 @Published var items: [Int] = [0]
     
+✅ Builder
 lazy var tableRefresh = RefreshControlBuilder()
     .setRefreshPublisher(&store) {
         print("Should Refresh")
     }
     .build()
-    
+
+✅ Builder
 lazy var tableView = TableViewBuilder()
     .setRefreshControl(tableRefresh)
     .setDelegate(self)
@@ -65,6 +86,7 @@ func buildTableViewCell(_ table: UITableView, _ indexPath: IndexPath, _ element:
 @Published var items: [Int] = [0]
 private var cancellables = Set<AnyCancellable>()
     
+✅ Builder
 lazy var refresh = RefreshControlBuilder()
     .setRefreshPublisher(&cancellables) {
         self.shouldRefresh()
@@ -74,6 +96,7 @@ var cellSize: CGSize {
     let width = view.frame.width / 3 - 1
     return .init(width: width, height: width)
 }
+✅ Builder
 lazy var flow = CollectionViewFlowLayoutBuilder()
     .setMinimumLineSpacing(1)
     .setMinimumInteritemSpacing(1)
@@ -81,6 +104,7 @@ lazy var flow = CollectionViewFlowLayoutBuilder()
     .setItemSize(cellSize)
     .build()
 
+✅ Builder
 lazy var collectionView = CollectionViewBuilder()
     .setRefreshControl(self.refresh)
     .registerCell(CustomCollectionCell.self, identifier: "CustomCollectionCell")
@@ -101,6 +125,7 @@ func buildCollectionViewCell(_ collectionView: UICollectionView, _ indexPath: In
 ```swift
 private var store = Set<AnyCancellable>()
 
+✅ Builder
 lazy var textField = TextFieldBuilder()
     .setPlaceholder("Type Something")
     .setTextColor(.black)
@@ -117,6 +142,7 @@ lazy var textField = TextFieldBuilder()
 ```swift
 private var store = Set<AnyCancellable>()
 
+✅ Builder
 lazy var textView = TextViewBuilder()
     .setTextColor(.black)
     .setTranslatesAutoresizing()
@@ -133,6 +159,7 @@ lazy var textView = TextViewBuilder()
 ```swift 
 private var cancellables = Set<AnyCancellable>()
 
+✅ Builder
 lazy var uiSwitch = SwitchBuilder()
     .bind(to: &viewModel.$switchStatus)
     .setSwitchPublisher(&cancellables) {
