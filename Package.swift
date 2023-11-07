@@ -12,7 +12,7 @@ let package = Package(
             targets: ["UIBuilder"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/MightyCombine/MightyCombine.git", from: "1.0.2"),
+        .package(url: "https://github.com/MightyCombine/MightyCombine.git", from: "1.1.2"),
     ],
     targets: [
         .target(

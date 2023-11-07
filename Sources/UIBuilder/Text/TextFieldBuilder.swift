@@ -140,9 +140,7 @@ public class TextFieldBuilder: UIBuilder<UITextField> {
     public func bind(
         to published: inout Published<String>.Publisher
     ) -> Self {
-        self.view
-            .textPublisher
-            .assign(to: &published)
+        self.view.textPublisher.assign(to: &published)
         return self
     }
 }

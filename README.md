@@ -128,3 +128,17 @@ lazy var textView = TextViewBuilder()
     .bind(to: &viewModel.$text)
     .build()
 ```
+
+### UISwitch
+```swift 
+private var cancellables = Set<AnyCancellable>()
+
+lazy var uiSwitch = SwitchBuilder()
+    .bind(to: &viewModel.$switchStatus)
+    .setSwitchPublisher(&cancellables) {
+        print($0)
+    }
+    .addToSuperView(self.view)
+    .setTranslatesAutoresizing()
+    .build()
+```

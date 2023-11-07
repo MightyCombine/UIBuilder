@@ -7,6 +7,8 @@
 
 #if canImport(UIKit)
 import UIKit
+import Combine
+import MightyCombine
 
 public class SwitchBuilder: UIBuilder<UISwitch> {
     
@@ -32,6 +34,24 @@ public class SwitchBuilder: UIBuilder<UISwitch> {
     
     public func setOffImage(_ image: UIImage?) -> Self {
         view.offImage = image
+        return self
+    }
+    
+    public func setSwitchPublisher(
+        _ cancellables: inout Set<AnyCancellable>,
+        _ action: @escaping (Bool) -> Void
+    ) -> Self {
+        self.view.switchPublisher.sink {
+            action($0)
+        }.store(in: &cancellables)
+        return self
+    }
+    
+    @available(iOS 14.0, *)
+    public func bind(
+        to published: inout Published<Bool>.Publisher
+    ) -> Self {
+        view.switchPublisher.assign(to: &published)
         return self
     }
 }
