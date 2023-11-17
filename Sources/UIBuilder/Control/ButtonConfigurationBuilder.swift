@@ -9,6 +9,7 @@ import Foundation
 import UIKit.UIButton
 
 @available(iOS 15.0, *)
+
 public class ButtonConfigurationBuilder {
     
     private var configuration: UIButton.Configuration
@@ -16,9 +17,10 @@ public class ButtonConfigurationBuilder {
     public func build() -> UIButton.Configuration {
         return configuration
     }
+
     
-    public init() {
-        configuration = UIButton.Configuration.filled()
+    public init(configuration: UIButton.Configuration = UIButton.Configuration.filled()) {
+        self.configuration = configuration
     }
     
     public func setImage(_ image: UIImage) -> Self {
