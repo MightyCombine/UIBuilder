@@ -36,8 +36,8 @@ public class ButtonConfigurationBuilder {
         return self
     }
     
-    public func setBackground(_ background: UIBackgroundConfiguration) -> Self {
-        configuration.background = background
+    public func setBackground(_ backgroundClosure: @escaping (() -> UIBackgroundConfiguration) ) -> Self {
+        configuration.background = backgroundClosure()
         return self
     }
     
