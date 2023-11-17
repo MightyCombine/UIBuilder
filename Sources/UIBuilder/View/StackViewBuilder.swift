@@ -10,6 +10,11 @@ import UIKit
 
 public class StackViewBuilder: UIBuilder<UIStackView> {
     
+    public func setCustomSpacing(_ spacing: CGFloat, after: UIView) -> Self {
+        self.view.setCustomSpacing(spacing, after: after)
+        return self
+    }
+    
     public func addArrangedSubview(_ view: UIView) -> Self {
         self.view.addArrangedSubview(view)
         return self
