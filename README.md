@@ -43,11 +43,7 @@ lazy var button = ButtonBuilder()
     .setTitle("Button", for: .normal)
     .setTitleColor(.blue, for: .normal)
     .setTranslatesAutoresizing()
-    .setBackground {
-         var a = UIBackgroundConfiguration.clear()
-         a.cornerRadius = 20.0
-         return a
-    }
+    .setBackgroundCornerRadius(20.0)
     .addToSuperView(self.view)
     .setEventPublisher(&store) {
         print("Tap")
