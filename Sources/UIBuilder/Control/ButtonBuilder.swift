@@ -57,5 +57,13 @@ public class ButtonBuilder: UIBuilder<UIButton> {
         view.showsTouchWhenHighlighted = shows
         return self
     }
+    
+    
+    @available(iOS 15.0, *)
+    public func setConfiguration(_ configuration: UIButton.Configuration ) -> Self {
+        view.configuration = configuration
+        return self
+        
+    }
 }
 #endif
