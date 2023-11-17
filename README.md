@@ -2,6 +2,15 @@
 
 ## ✔️ Examples
 
+### UIView
+✅ Builder
+```swift
+private lazy var view = UIBuilder()
+        .setBackgroundColor(.black)
+        .build()
+```
+✅ SelfBuildable 
+
 ### UILabel
 ```swift
 private var store = Set<AnyCancellable>()
@@ -34,6 +43,7 @@ lazy var button = ButtonBuilder()
     .setTitle("Button", for: .normal)
     .setTitleColor(.blue, for: .normal)
     .setTranslatesAutoresizing()
+    .setBackgroundCornerRadius(20.0)
     .addToSuperView(self.view)
     .setEventPublisher(&store) {
         print("Tap")
@@ -167,5 +177,23 @@ lazy var uiSwitch = SwitchBuilder()
     }
     .addToSuperView(self.view)
     .setTranslatesAutoresizing()
+    .build()
+```
+
+### UIStackView
+```swift 
+private var cancellables = Set<AnyCancellable>()
+
+✅ Builder
+private lazy var inputStackView =
+    StackViewBuilder(
+        view: UIStackView(arrangedSubviews: [view1,view2,view3])
+    )
+    .setSpacing(4.0)
+    .setCustomSpacing(10.0, after: view2)
+    .setAlignment(.fill)
+    .setIsUserInteractionEnabled(true)
+    .addToSuperView(self.view)
+    .setBackgroundColor(.gray)
     .build()
 ```

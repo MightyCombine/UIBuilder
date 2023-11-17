@@ -22,6 +22,11 @@ public class TextFieldBuilder: UIBuilder<UITextField> {
         return self
     }
     
+    public func setTintColor(_ color: UIColor) -> Self {
+        view.tintColor = color
+        return self
+    }
+    
     public func setFont(_ font: UIFont) -> Self {
         view.font = font
         return self
