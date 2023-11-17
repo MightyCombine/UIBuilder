@@ -31,10 +31,6 @@ public class ButtonConfigurationBuilder {
         return self
     }
     
-    public func setBackgroundCornerRadius(_ radius: CGFloat) -> Self {
-        configuration.background.cornerRadius = radius
-        return self
-    }
     
     public func setBackground(_ backgroundClosure: (() -> UIBackgroundConfiguration) ) -> Self {
         configuration.background = backgroundClosure()
