@@ -15,8 +15,10 @@ public class StackViewBuilder: UIBuilder<UIStackView> {
         return self
     }
     
-    public func addArrangedSubview(_ view: UIView) -> Self {
-        self.view.addArrangedSubview(view)
+    public func addArrangedSubviews(_ views: UIView...) -> Self {
+        views.forEach { [weak self] in
+            self?.view.addArrangedSubview($0)
+        }
         return self
     }
     
