@@ -19,6 +19,8 @@ private var store = Set<AnyCancellable>()
 lazy var label = LabelBuilder()
     .setText("\(Hello World)")
     .setTextColor(.black)
+    .setPointTextColor("Hello", color: .red)
+    .setLineHeight(30)
     .setTranslatesAutoresizing()
     .addToSuperView(self.view)
     .setTapPublusher(&store) {
@@ -185,10 +187,8 @@ lazy var uiSwitch = SwitchBuilder()
 private var cancellables = Set<AnyCancellable>()
 
 ✅ Builder
-private lazy var inputStackView =
-    StackViewBuilder(
-        view: UIStackView(arrangedSubviews: [view1,view2,view3])
-    )
+private lazy var inputStackView = StackViewBuilder()
+    .addArragedSubviews(view1, view2, view3)
     .setSpacing(4.0)
     .setCustomSpacing(10.0, after: view2)
     .setAlignment(.fill)
