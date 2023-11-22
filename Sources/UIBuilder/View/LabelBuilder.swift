@@ -82,6 +82,22 @@ public class LabelBuilder: UIBuilder<UILabel> {
         return self
     }
     
+    /// 부분 색상 강조
+    /// - Parameter Color : 강조할 색상
+    /// - Parameter pointText : 강조할 텍스트
+    public func setPointTextColor(_ pointText: String, color: UIColor) -> Self {
+        guard let content = view.text else { return self }
+        
+        let attributedStr = NSMutableAttributedString(string: content)
+        attributedStr.addAttribute(.foregroundColor,
+                                   value: color,
+                                   range: (content as NSString).range(of: pointText))
+        
+        self.view.attributedText = attributedStr
+
+        return self
+    }
+    
     public func setShadowColor(_ color: UIColor?) -> Self {
         view.shadowColor = color
         return self
