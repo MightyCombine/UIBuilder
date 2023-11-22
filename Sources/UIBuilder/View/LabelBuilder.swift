@@ -98,6 +98,23 @@ public class LabelBuilder: UIBuilder<UILabel> {
         return self
     }
     
+    public func setLineHeight(_ lineHeight: CGFloat) -> Self {
+        guard let text = view.text else { return self }
+            let style = NSMutableParagraphStyle()
+            style.maximumLineHeight = lineHeight
+            style.minimumLineHeight = lineHeight
+        
+            let attributes: [NSAttributedString.Key: Any] = [
+                .paragraphStyle: style,
+                .baselineOffset: (lineHeight - view.font.lineHeight) / 4
+            ]
+            
+            let attrString = NSAttributedString(string: text,
+                                                attributes: attributes)
+            view.attributedText = attrString
+        return self
+    }
+    
     public func setShadowColor(_ color: UIColor?) -> Self {
         view.shadowColor = color
         return self
