@@ -76,7 +76,7 @@ extension UIBuilder {
     }
     
     
-    public func setTapPublusher(_ cancellables: inout Set<AnyCancellable>,_ action: @escaping () -> Void) -> Self {
+    public func setTapPublisher(_ cancellables: inout Set<AnyCancellable>,_ action: @escaping () -> Void) -> Self {
         view.tapGesturePublisher.sink { _ in
             action()
         }.store(in: &cancellables)
