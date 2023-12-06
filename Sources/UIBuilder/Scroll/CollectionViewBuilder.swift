@@ -40,6 +40,11 @@ public class CollectionViewBuilder: ScrollViewBuilder<UICollectionView> {
         return self
     }
     
+    public func register(_ viewClass: AnyClass?, forSupplementaryViewOfKind elementKind: String, withReuseIdentifier identifier: String) -> Self {
+        view.register(viewClass, forSupplementaryViewOfKind: elementKind, withReuseIdentifier: identifier)
+        return self
+    }
+    
     public func bind<T>(
         items: Published<[T]>.Publisher,
         _ cancellables: inout Set<AnyCancellable>,

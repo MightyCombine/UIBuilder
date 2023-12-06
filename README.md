@@ -121,6 +121,11 @@ lazy var flow = CollectionViewFlowLayoutBuilder()
 
 ✅ Builder
 lazy var collectionView = CollectionViewBuilder()
+    .register(
+        HeaderView.self, 
+        forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, 
+        withReuseIdentifier: HeaderView.identifier
+    )
     .setRefreshControl(self.refresh)
     .registerCell(CustomCollectionCell.self, identifier: "CustomCollectionCell")
     .bind(items: $items, &cancellables, buildCollectionViewCell(_:_:_:))
