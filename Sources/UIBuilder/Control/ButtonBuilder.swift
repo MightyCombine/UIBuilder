@@ -58,6 +58,11 @@ public class ButtonBuilder: UIBuilder<UIButton> {
         return self
     }
     
+    @available(iOS 15.0, *)
+    public func setImageEdgeInsets(_ edgeInsets: UIEdgeInsets) -> Self {
+        view.imageEdgeInsets = edgeInsets
+        return self 
+    }
     
     @available(iOS 15.0, *)
     public func setConfiguration(_ configuration: UIButton.Configuration ) -> Self {
