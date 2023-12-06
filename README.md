@@ -85,7 +85,7 @@ lazy var tableView = TableViewBuilder()
     .setTranslatesAutoresizing()
     .addToSuperView(self.view)
     .registerCell(UITableViewCell.self, identifier: "UITableViewCell")
-    .registerHeaderFooter(HeaderView.self, "HeaderViewe")
+    .registerView(HeaderView.self, "HeaderViewe")
     .bind(items: $items, &cancellables, self.buildTableViewCell(_:_:_:))
     .build()
     
@@ -121,7 +121,7 @@ lazy var flow = CollectionViewFlowLayoutBuilder()
 
 ✅ Builder
 lazy var collectionView = CollectionViewBuilder()
-    .register(
+    .registerView(
         HeaderView.self, 
         forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, 
         withReuseIdentifier: HeaderView.identifier
