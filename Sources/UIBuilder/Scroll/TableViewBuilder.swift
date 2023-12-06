@@ -66,6 +66,11 @@ public class TableViewBuilder: ScrollViewBuilder<UITableView> {
         return self
     }
     
+    public func registerHeaderFooter<T: UITableViewHeaderFooterView>(_ headerFooterClass: T.Type, identifier: String) -> Self {
+        view.register(headerFooterClass, forHeaderFooterViewReuseIdentifier: identifier)
+        return self
+    }
+    
     public func bind<T>(
         items: Published<[T]>.Publisher,
         _ cancellables: inout Set<AnyCancellable>,
