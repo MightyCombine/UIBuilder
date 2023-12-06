@@ -78,6 +78,7 @@ lazy var tableRefresh = RefreshControlBuilder()
 
 ✅ Builder
 lazy var tableView = TableViewBuilder()
+    .setSectionHeaderTopPadding(16)
     .setRefreshControl(tableRefresh)
     .setDelegate(self)
     .setDataSource(self)

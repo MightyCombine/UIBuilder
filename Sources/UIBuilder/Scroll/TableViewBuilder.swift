@@ -71,6 +71,12 @@ public class TableViewBuilder: ScrollViewBuilder<UITableView> {
         return self
     }
     
+    @available(iOS 15.0, *)
+    public func setSectionHeaderTopPadding(_ padding: CGFloat) -> Self {
+        view.sectionHeaderTopPadding = padding
+        return self
+    }
+    
     public func bind<T>(
         items: Published<[T]>.Publisher,
         _ cancellables: inout Set<AnyCancellable>,
