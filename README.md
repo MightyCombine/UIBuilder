@@ -84,8 +84,12 @@ lazy var tableView = TableViewBuilder()
     .setDataSource(self)
     .setTranslatesAutoresizing()
     .addToSuperView(self.view)
-    .registerCell(UITableViewCell.self, identifier: "UITableViewCell")
-    .registerView(HeaderView.self, "HeaderViewe")
+    .registerCell(
+        UITableViewCell.self, 
+        identifier: "UITableViewCell")
+    .registerView(
+        HeaderView.self, 
+        "HeaderView")
     .bind(items: $items, &cancellables, self.buildTableViewCell(_:_:_:))
     .build()
     
@@ -124,10 +128,11 @@ lazy var collectionView = CollectionViewBuilder()
     .registerView(
         HeaderView.self, 
         forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, 
-        withReuseIdentifier: HeaderView.identifier
-    )
+        withReuseIdentifier: HeaderView.identifier)
     .setRefreshControl(self.refresh)
-    .registerCell(CustomCollectionCell.self, identifier: "CustomCollectionCell")
+    .registerCell(
+        CustomCollectionCell.self, 
+        identifier: "CustomCollectionCell")
     .bind(items: $items, &cancellables, buildCollectionViewCell(_:_:_:))
     .setTranslatesAutoresizing()
     .addToSuperView(self.view)
