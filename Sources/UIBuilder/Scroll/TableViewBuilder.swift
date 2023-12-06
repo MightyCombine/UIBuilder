@@ -66,7 +66,7 @@ public class TableViewBuilder: ScrollViewBuilder<UITableView> {
         return self
     }
     
-    public func registerHeaderFooter<T: UITableViewHeaderFooterView>(_ headerFooterClass: T.Type, identifier: String) -> Self {
+    public func registerView<T: UITableViewHeaderFooterView>(_ headerFooterClass: T.Type, identifier: String) -> Self {
         view.register(headerFooterClass, forHeaderFooterViewReuseIdentifier: identifier)
         return self
     }
